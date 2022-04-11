@@ -42,11 +42,11 @@ int main(int argc, char * argv[])
     strcat(command_d, code_d);
     strcat(command_d, "'");
 
+
+    system(command_d);
+
     free(code_d);
     free(command_d);
-
-//    printf("%s", command_d);
-    system(command_d);
 
     return 0;
 }
