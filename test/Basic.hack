@@ -1,11 +1,11 @@
 /*
-    In *hack files use double quotes instead single
+    In *.hack files use double quotes instead single
     Use:
-        ./hack-exec "./test/class_basic.hack"
+        ./bin/hack-exec "./test/Basic.hack"
     in terminal
 */
 
-class SimpleClass
+class Basic
 {
     // property declaration
     public $var = "a default value \n";
@@ -16,5 +16,5 @@ class SimpleClass
     }
 }
 
-$simpleClass = new SimpleClass();
-$simpleClass->displayVar();
+$class = new Basic();
+$class->displayVar();

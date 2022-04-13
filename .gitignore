@@ -1,2 +1,10 @@
 .idea
-hack-exec
+
+bin/*
+!bin/.gitfolder
+script/*
+!script/.gitfolder
+
+import
+
+bin/hack-exec

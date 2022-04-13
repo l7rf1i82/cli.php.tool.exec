@@ -1,7 +1,7 @@
 /*
-    In *hack files use double quotes instead single
+    In *.hack files use double quotes instead single
     Use:
-        ./hack-exec "./test/class_static.hack"
+        ./bin/hack-exec "./test/Static.hack"
     in terminal
 */
 

@@ -1,11 +1,11 @@
 /*
-    In *hack files use double quotes instead single
+    In *.hack files use double quotes instead single
     Use:
-        ./hack-exec "./test/class_constant.hack"
+        ./bin/hack-exec "./test/FieldsConstant.hack"
     in terminal
 */
 
-class MyClass
+class FieldsConstant
 {
     const CONSTANT = "constant value";
 
@@ -14,12 +14,12 @@ class MyClass
     }
 }
 
-echo MyClass::CONSTANT . "\n";
+echo FieldsConstant::CONSTANT . "\n";
 
-$classname = "MyClass";
+$classname = "FieldsConstant";
 echo $classname::CONSTANT . "\n";
 
-$class = new MyClass();
+$class = new FieldsConstant();
 $class->showConstant();
 
 echo $class::CONSTANT."\n";
