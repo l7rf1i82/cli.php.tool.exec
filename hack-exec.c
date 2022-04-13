@@ -44,7 +44,7 @@ char * getArgString(char * argv[])
 
     for (int i = 3; argv[i] != (void *)0; ++i)
     {
-        str_argv_current = malloc(strlen(argv[i]) + 4);
+        str_argv_current = malloc(strlen(argv[i]) * 2 + 4);
         strcpy(str_argv_current, argv[i]);
 
         if (str_argv != NULL)
