@@ -136,7 +136,7 @@ int main(int argc, char * argv[])
     {
         char * argv_str = getArgString(argv);
 
-        command_d_copy = malloc(strlen(command_d));
+        command_d_copy = malloc(strlen(command_d) + 256);
         strcpy(command_d_copy, command_d);
 
         // extend command size
