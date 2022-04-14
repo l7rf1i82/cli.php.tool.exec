@@ -1,7 +1,9 @@
 /*
     In *.hack files use double quotes instead single
     Use:
-        ./bin/hack-exec "./test/Callback.hack" "Callback::main" 1024 4096 Компилятор Интерпретатор
+        ./bin/hack-exec "./test/Callback.hack" "Callback::main" 1024 4096 \
+            "Безопасный компилятор" \
+            "Быстрый интерпретатор"
     in terminal
 */
 
