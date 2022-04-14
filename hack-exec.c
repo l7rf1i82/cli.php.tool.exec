@@ -36,7 +36,6 @@ char * getCallbackString(char * callback_name)
 
 char * getArgString(char * argv[])
 {
-
     char * str_argv_current;
 
     char * str_argv_copy;
@@ -44,23 +43,25 @@ char * getArgString(char * argv[])
 
     for (int i = 3; argv[i] != (void *)0; ++i)
     {
-        str_argv_current = malloc(strlen(argv[i]) * 2 + 4);
+        str_argv_current = malloc(strlen(argv[i]) * 4 + 8);
         strcpy(str_argv_current, argv[i]);
 
         if (str_argv != NULL)
         {
-            str_argv_copy = malloc(strlen(str_argv) + 4);
+            str_argv_copy = malloc(strlen(str_argv) + 8);
             strcpy(str_argv_copy, str_argv);
+            free(str_argv);
         }
 
         if (str_argv_copy != NULL)
         {
-            str_argv      = malloc(strlen(str_argv_copy) + strlen(str_argv_current)  + 4);
+            str_argv      = malloc(strlen(str_argv_copy) + strlen(str_argv_current) * 4 + 8);
             strcpy(str_argv, str_argv_copy);
+            free(str_argv_copy);
         }
         else
         {
-            str_argv      = malloc(strlen(str_argv_current)  + 8);
+            str_argv      = malloc(strlen(str_argv_current) * 4 + 8);
         }
 
         if(i > 3)
@@ -68,10 +69,8 @@ char * getArgString(char * argv[])
             strcat(str_argv, " ");
         }
             strcat(str_argv, str_argv_current);
+            free(str_argv_current);
     }
-
-    free(str_argv_current);
-    free(str_argv_copy);
 
     return str_argv;
 }
@@ -95,7 +94,7 @@ int main(int argc, char * argv[])
         line_count++;
     }
     code_d    = malloc(LINE_LENGTH_MAX * line_count);
-    command_d = malloc(LINE_LENGTH_MAX * line_count + 16);
+    command_d = malloc(LINE_LENGTH_MAX * line_count + 32);
 
     rewind(fp);
 
@@ -105,8 +104,7 @@ int main(int argc, char * argv[])
 
     fclose(fp);
 
-    strcat(command_d, "php -r ");
-    strcat(command_d, "'");
+    strcat(command_d, "php -r '");
     strcat(command_d, code_d);
     free(code_d);
 
@@ -116,11 +114,11 @@ int main(int argc, char * argv[])
     {
         char * callback_str = getCallbackString(argv[2]);
 
-        command_d_copy = malloc(strlen(command_d));
+        command_d_copy = malloc(strlen(command_d) + 8);
         strcpy(command_d_copy, command_d);
 
         // extend command size
-        command_d = malloc(strlen(command_d_copy) + strlen(callback_str));
+        command_d = malloc(strlen(command_d_copy) + strlen(callback_str) + 8);
 
         strcpy(command_d, command_d_copy);
         free(command_d_copy);
@@ -136,11 +134,11 @@ int main(int argc, char * argv[])
     {
         char * argv_str = getArgString(argv);
 
-        command_d_copy = malloc(strlen(command_d) + 256);
+        command_d_copy = malloc(strlen(command_d) + 8);
         strcpy(command_d_copy, command_d);
 
         // extend command size
-        command_d = malloc(strlen(command_d_copy) + strlen(argv_str));
+        command_d = malloc(strlen(command_d_copy) + strlen(argv_str) + 8);
 
         strcpy(command_d, command_d_copy);
         free(command_d_copy);

@@ -1,7 +1,7 @@
 /*
     In *.hack files use double quotes instead single
     Use:
-        ./bin/hack-exec "./test/Argument.hack" "" 1024 4096
+        ./bin/hack-exec "./test/Argument.hack" "" 1024 4096 Таблица Кодировка
     in terminal
 */
 
